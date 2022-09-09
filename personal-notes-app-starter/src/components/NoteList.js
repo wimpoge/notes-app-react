@@ -5,11 +5,9 @@ import PropTypes from "prop-types";
 function NoteList({ notes }) {
   return (
     <div className="notes-list">
-      {notes.map((note) => (
-        <div key={note.id}>
-          <NoteItem id={note.id} {...note} />
-        </div>
-      ))}
+      {notes.length
+        ? notes.map((note) => <NoteItem key={note.id} {...note} />)
+        : "Tidak ada catatan"}
     </div>
   );
 }

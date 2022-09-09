@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import NoteList from "../components/NoteList";
 import { getAllNotes } from "../utils/local-data";
 import { GrAddCircle } from "react-icons/gr";
+import SearchBar from "../components/SearchBar";
 
 class Homepage extends React.Component {
   constructor(props) {
@@ -12,6 +13,14 @@ class Homepage extends React.Component {
       notes: getAllNotes(),
       keyword: props.defaultKeyword || "",
     };
+    this.onKeywordChangeHandler = this.onKeywordChangeHandler.bind(this);
+  }
+  onKeywordChangeHandler(keyword) {
+    this.setState(() => {
+      return {
+        keyword,
+      };
+    });
   }
 
   render() {
@@ -25,9 +34,15 @@ class Homepage extends React.Component {
       <div>
         <section>
           <h2>Daftar Catatan</h2>
+          <SearchBar
+            keyword={this.state.keyword}
+            keywordChange={this.onKeywordChangeHandler}
+          />
           <NoteList notes={notes} />
         </section>
-        <Link to="/add" className="action"><GrAddCircle /></Link>
+        <Link to="/add" className="action">
+          <GrAddCircle />
+        </Link>
       </div>
     );
   }
