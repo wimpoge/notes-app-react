@@ -6,29 +6,30 @@ import PropTypes from "prop-types";
 
 function DetailPageWrapper() {
   const { id } = useParams();
-  return <DetailPage id={Number(id)} />;
+  return <DetailPage id={id}  />;
 }
 
 class DetailPage extends React.Component {
   constructor(props) {
     super(props);
-
+    
     this.state = {
       note: getNote(props.id),
     };
   }
-
+  
   render() {
     return (
       <section>
-        <NoteDetail {...this.state.note} />
+        <NoteDetail  {...this.state.note} />
       </section>
     );
   }
 }
 
 DetailPage.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default DetailPageWrapper;
