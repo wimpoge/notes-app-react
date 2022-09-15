@@ -2,12 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import { showFormattedDate } from '../utils/index';
 import DeleteButton from "./DeleteButton";
-import NoteItem from "./NoteItem";
+// import NoteItem from "./NoteItem";
 
 function NoteDetail({ id, title, createdAt, body, onDelete }) {
   return (
     <div>
-      <NoteItem id={id} title={title} createdAt={createdAt} body={body}/>
+      {/* <NoteItem id={id} title={title} createdAt={createdAt} body={body}/> */}
       <DeleteButton id={id} onDelete={onDelete}/>
     </div>
   );
