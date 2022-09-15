@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import NoteDetail from "../components/NoteDetail";
 import { deleteNote, getNote } from "../utils/local-data";
 import PropTypes from "prop-types";
+import NoteItem from "../components/NoteItem";
 
 // function DetailPageWrapper() {
 //   const { id } = useParams();
@@ -45,7 +46,7 @@ function DetailPage() {
     const [note, setNote] = React.useState({
       title: '',
       body: '',
-      createdAt: null,
+      createdAt: '',
     });
     const { title, body, createdAt } = note;
 
