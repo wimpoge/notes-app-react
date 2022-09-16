@@ -4,14 +4,15 @@ import { BiTrash } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import { deleteNote } from "../utils/network-data";
 
-function DeleteButton({ id, onDelete }) {
+function DeleteButton({id}) {
   const navigate = useNavigate();
+  const onDelete = deleteNote(id)
 
   return (
     <button
       className="action"
       onClick={(note) => {
-        deleteNote(note.id);
+        onDelete(note.id);
         navigate("/");
       }}
     >

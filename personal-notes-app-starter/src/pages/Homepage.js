@@ -94,7 +94,6 @@ function Homepage() {
         // keywordChange={this.onKeywordChangeHandler}
         />
         <NoteList notes={notes} />
-        
       </section>
 
       <Link to="/add" className="action">
