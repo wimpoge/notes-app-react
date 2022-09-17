@@ -5,8 +5,8 @@ import { showFormattedDate } from '../utils/index';
 function NoteItemBody({ createdAt, body }) {
   return (
     <div className="note-item__body">
-      <p className="note-item__username">{showFormattedDate(createdAt)}</p>
-      <p className="note-item__username">{body}</p>
+      <p className="note-item__createdAt">{showFormattedDate(createdAt)}</p>
+      <p className="note-item__body">{body}</p>
     </div>
   );
 }
