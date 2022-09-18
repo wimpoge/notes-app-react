@@ -1,16 +1,11 @@
 import React from 'react';
-
 import { login } from '../utils/network-data';
 import PropTypes from 'prop-types';
 import LoginInput from '../components/LoginInput';
 import { Link } from 'react-router-dom';
-
-
 function Login({loginSuccess}) {
-    
     async function onLogin({ email, password }) {
         const { error, data } = await login({ email, password });
-     
         if (!error) {
           loginSuccess(data);
         }

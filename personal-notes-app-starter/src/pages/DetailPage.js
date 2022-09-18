@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { deleteNote, getNote } from "../utils/network-data";
-import { showFormattedDate } from "../utils";
 import { BiTrash } from "react-icons/bi";
 
 function DetailPage() {
