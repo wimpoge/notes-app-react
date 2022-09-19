@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const NotFound = () => {
   return (
-    <div style={{ textAlign: "center",  }}>
+    <div style={{ textAlign: "center" }}>
       NotFound
       <br />
       <Link to="/" style={{ textAlign: "center" }}>

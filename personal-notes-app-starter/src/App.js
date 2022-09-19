@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import AddPage from "./pages/AddPage";
 import Homepage from "./pages/Homepage";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import DetailPage from "./pages/DetailPage";
 import NotFound from "./pages/404";
 import Login from '../src/pages/Login';
@@ -13,16 +13,18 @@ import LocaleContext from "./contexts/LocaleContext";
 
 
 function App() {
+  const navigate = useNavigate();
   const [authedUser, setAuthedUser] = React.useState(null)
+  const [loading, setLoading] = React.useState(true)
+
   const [theme, setTheme] = React.useState(
     localStorage.getItem("theme") || "light"
   );
-  const [locale, setLocale] = React.useState('id')
-
+  
   const toggleTheme = () => {
     setTheme((prevTheme) => {
       const changeTheme = prevTheme === "light" ? "dark" : "light";
-      localStorage.setItem("theme", changeTheme);
+      localStorage.setItem("data-theme", changeTheme);
       return changeTheme;
     });
   };
@@ -37,6 +39,8 @@ function App() {
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
+  
+  const [locale, setLocale] = React.useState('id')
 
   const toggleLocale = () => {
     setLocale((prevLocale) => {
@@ -60,6 +64,27 @@ function App() {
     const { data } = await getUserLogged();
     setAuthedUser(data);
   }
+
+  const logout = () => {
+    setAuthedUser(null);
+    navigate('/')
+    putAccessToken('');
+  }
+
+  React.useState(() => {
+    async function setUserLogged() {
+      const { data } = await getUserLogged();
+      setAuthedUser(data);
+      setLoading(false);
+    };
+
+    setUserLogged();
+  }, [authedUser]);
+
+  if (loading) {
+    return null;
+  }
+
 
 
 
@@ -88,7 +113,7 @@ function App() {
       <LocaleContext.Provider value={localeContextValue}>
         <div className="contact-app">
         <h1>{localeContextValue.locale === "id" ? "Aplikasi Catatan" : "Note App"}</h1>
-          <Navbar user={authedUser} />
+          <Navbar user={authedUser} logout={logout}/>
           <main>
             <Routes>
               <Route path="*" element={<NotFound />} />

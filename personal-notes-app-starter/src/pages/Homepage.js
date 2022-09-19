@@ -6,61 +6,6 @@ import { GrAddCircle } from "react-icons/gr";
 import SearchBar from "../components/SearchBar";
 import LocaleContext, { LocaleConsumer } from "../contexts/LocaleContext";
 
-// class Homepage extends React.Component {
-//   constructor(props) {
-//     super(props);
-
-//     this.state = {
-//       notes: getActiveNotes(),
-//       keyword: props.defaultKeyword || "",
-//     };
-//     this.onKeywordChangeHandler = this.onKeywordChangeHandler.bind(this);
-//   }
-//   onKeywordChangeHandler(keyword) {
-//     this.setState(() => {
-//       return {
-//         keyword,
-//       };
-//     });
-//   }
-
-//   async onDeleteHandler(id) {
-//     await deleteNote(id);
-
-//     // update the contact state from data.js
-//     const { data  } = await getActiveNotes();
-//     this.setState(() => {
-//       return {
-//         contacts: data,
-//       }
-//     });
-//   }
-
-//   render() {
-//     const notes = this.state.notes.filter((note) => {
-//       return note.title
-//         .toLowerCase()
-//         .includes(this.state.keyword.toLowerCase());
-//     });
-
-//     return (
-//       <div>
-//         <section>
-//           <h2>Daftar Catatan</h2>
-//           <SearchBar
-//             keyword={this.state.keyword}
-//             keywordChange={this.onKeywordChangeHandler}
-//           />
-//           <NoteList notes={notes} />
-//         </section>
-//         <Link to="/add" className="action">
-//           <GrAddCircle />
-//         </Link>
-//       </div>
-//     );
-//   }
-// }
-
 function Homepage() {
   const [notes, setNotes] = React.useState([])
   const [title, setTitle] = React.useState(null);
@@ -83,11 +28,11 @@ function Homepage() {
     setSearchParams({ keyword });
   }
 
-  const filteredContacts = notes.filter((note) => {
+  const filteredNotes = notes.filter((note) => {
     return note.title.toLowerCase().includes(
       keyword.toLowerCase()
     );
-  });
+  }, [notes, keyword]);
 
 
   React.useEffect(() => {
@@ -121,7 +66,7 @@ function Homepage() {
                   keyword={keyword}
                   keywordChange={onKeywordChangeHandler}
                 />
-                <NoteList notes={notes} filter={filteredContacts} />
+                <NoteList notes={notes} filter={filteredNotes} />
               </section>
 
               <Link to="/add" className="action">

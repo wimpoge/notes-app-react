@@ -3,7 +3,7 @@ import { MdGTranslate, MdOutlineDarkMode, MdOutlineLightMode, MdLogout } from "r
 import LocaleContext from '../contexts/LocaleContext';
 import ThemeContext from '../contexts/ThemeContext';
 
-function Navbar({ user }) {
+function Navbar({ user, logout }) {
     const { theme, toggleTheme } = React.useContext(ThemeContext);
     const { locale, toggleLocale } = React.useContext(LocaleContext);
 
@@ -18,11 +18,11 @@ function Navbar({ user }) {
                     </li>
                     <li>
                         <button onClick={toggleTheme}>
-                            {theme === 'light' ? <MdOutlineDarkMode /> : <MdOutlineLightMode />}
+                            {theme === 'dark' ? <MdOutlineDarkMode /> : <MdOutlineLightMode />}
                         </button>
                     </li>
                     <li>
-                        <button><MdLogout /> {user.name}  </button>
+                        <button onClick={logout}><MdLogout /> {user.name}  </button>
                     </li>
                 </ul>
             </div>
