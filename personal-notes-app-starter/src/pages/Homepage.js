@@ -4,7 +4,7 @@ import NoteList from "../components/NoteList";
 import { getActiveNotes, deleteNote } from "../utils/network-data";
 import { GrAddCircle } from "react-icons/gr";
 import SearchBar from "../components/SearchBar";
-import LocaleContext, { LocaleConsumer } from "../contexts/LocaleContext";
+import { LocaleConsumer } from "../contexts/LocaleContext";
 
 function Homepage() {
   const [notes, setNotes] = React.useState([])

@@ -10,7 +10,7 @@ import { getUserLogged, putAccessToken } from '../src/utils/network-data';
 import Navbar from "./components/Navbar";
 import ThemeContext from "./contexts/ThemeContext";
 import LocaleContext from "./contexts/LocaleContext";
-
+import './styles/style.css'
 
 function App() {
   const navigate = useNavigate();
@@ -82,7 +82,9 @@ function App() {
   }, [authedUser]);
 
   if (loading) {
-    return null;
+    return (
+      <div className="loading"> <h1>{localeContextValue.locale === "id" ? "Memuat..." : "Loading"}</h1></div>
+    )
   }
 
 

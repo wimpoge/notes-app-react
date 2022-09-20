@@ -284,3 +284,14 @@ main {
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
+.loading {
+  margin-top: 50%;
+  padding: 50px;
+  border-radius: 10px;
+  text-align: center;
+  justify-items: center;
+  margin-left: 10%;
+  margin-right: 10%;
+  border: 3px solid rgb(0, 0, 0);
+}
