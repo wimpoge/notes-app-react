@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import NoteList from "../components/NoteList";
-import { getActiveNotes, deleteNote } from "../utils/network-data";
+import { getActiveNotes } from "../utils/network-data";
 import { GrAddCircle } from "react-icons/gr";
 import SearchBar from "../components/SearchBar";
 import { LocaleConsumer } from "../contexts/LocaleContext";

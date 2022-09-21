@@ -13,7 +13,7 @@ function DetailPage() {
     createdAt: '',
   });
 
-  const { title, body, createdAt } = note;
+  
 
   React.useEffect(() => {
     async function getNoteDetail(id) {
@@ -24,7 +24,7 @@ function DetailPage() {
     }
 
     getNoteDetail(id);
-  }, []);
+  }, [id]);
 
 
   return (

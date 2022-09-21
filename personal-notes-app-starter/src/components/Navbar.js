@@ -2,7 +2,7 @@ import React from 'react'
 import { MdGTranslate, MdOutlineDarkMode, MdOutlineLightMode, MdLogout } from "react-icons/md";
 import LocaleContext from '../contexts/LocaleContext';
 import ThemeContext from '../contexts/ThemeContext';
-
+import PropTypes from "prop-types";
 function Navbar({ user, logout }) {
     const { theme, toggleTheme } = React.useContext(ThemeContext);
     const { locale, toggleLocale } = React.useContext(LocaleContext);
@@ -29,6 +29,11 @@ function Navbar({ user, logout }) {
         </header>
 
     )
+}
+
+Navbar.propTypes ={
+    user: PropTypes.object.isRequired,
+    logout: PropTypes.func.isRequired
 }
 
 export default Navbar
